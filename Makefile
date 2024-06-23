@@ -6,46 +6,46 @@
 #    By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 07:09:36 by emgul             #+#    #+#              #
-#    Updated: 2024/06/23 19:58:29 by emgul            ###   ########.fr        #
+#    Updated: 2024/06/23 20:03:06 by emgul            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES			=	parameters	\
-					cam	\
+FILES			=	cam	\
+					draw	\
 					exit	\
-					main	\
-					map	\
-					keypress	\
+					free	\
 					init	\
 					init2	\
-					free	\
-					utils	\
-					draw	\
-					render	\
+					keypress	\
+					main	\
+					map	\
 					map_utils	\
 					matrix	\
-					projection
+					parameters	\
+					projection	\
+					render	\
+					utils
 
-BONUS_FILES			=	parameters	\
-					cam	\
-					exit	\
-					main	\
-					map	\
-					keypress	\
-					keypress2	\
-					init	\
-					init2	\
-					free	\
-					utils	\
+BONUS_FILES		=	cam	\
 					draw	\
 					draw2	\
-					menu	\
-					menu2	\
-					render	\
+					exit	\
+					free	\
+					init	\
+					init2	\
+					keypress	\
+					keypress2	\
+					main	\
+					map	\
 					map_utils	\
 					matrix	\
+					menu	\
+					menu2	\
+					parameters	\
+					projection	\
+					render	\
 					rotate	\
-					projection
+					utils
 
 NAME			=	fdf
 
@@ -60,7 +60,6 @@ LIBFT			=	$(LIBFT_PATH)libft.a
 
 MLX_PATH		=	lib/minilibx/
 MLX				=	$(MLX_PATH)libmlx.a
-
 
 FILES_PATH		=	src/mandatory/
 BONUS_FILES_PATH=	src/bonus/
