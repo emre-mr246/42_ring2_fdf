@@ -15,7 +15,7 @@ The objective of the "fdf" project is to generate a wireframe representation of 
 1. In the project's main directory, compile the library using the `make` command.
    `$ make bonus` 
 
-2.  You can run the program with fallowing command:
+2. You can run the program with the following command:
    `$ ./fdf maps/pyramide.fdf` 
     
 ## Score 🥇
