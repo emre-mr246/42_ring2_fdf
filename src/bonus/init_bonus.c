@@ -6,13 +6,13 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 14:25:23 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 05:58:31 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/23 19:53:32 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/message.h"
 #include "../../inc/fdf.h"
-#include "../../lib/minilibx-linux/mlx.h"
+#include "../../lib/minilibx/mlx.h"
 #include <limits.h>
 #include <stdlib.h>
 

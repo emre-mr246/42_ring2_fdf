@@ -6,13 +6,13 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:41:53 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 05:44:22 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/23 19:53:41 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/color.h"
 #include "../../inc/fdf.h"
-#include "../../lib/minilibx-linux/mlx.h"
+#include "../../lib/minilibx/mlx.h"
 #include "../../lib/libft/libft.h"
 
 void	show_projections(t_fdf *fdf)

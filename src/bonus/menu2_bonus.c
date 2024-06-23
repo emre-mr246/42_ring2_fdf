@@ -6,13 +6,13 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:52:05 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/21 23:27:26 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/23 19:53:43 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/color.h"
 #include "../../inc/fdf.h"
-#include "../../lib/minilibx-linux/mlx.h"
+#include "../../lib/minilibx/mlx.h"
 #include <stdlib.h>
 
 void	show_color_mode(t_fdf *fdf)

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:14:28 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/21 05:39:14 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/23 19:53:28 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fdf.h"
-#include "../../lib/minilibx-linux/mlx.h"
+#include "../../lib/minilibx/mlx.h"
 #include <stdlib.h>
 
 static void	free_matrix(t_point **matrix, int height)

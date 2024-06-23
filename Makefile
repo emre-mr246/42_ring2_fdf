@@ -6,7 +6,7 @@
 #    By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 07:09:36 by emgul             #+#    #+#              #
-#    Updated: 2024/06/21 07:21:02 by emgul            ###   ########.fr        #
+#    Updated: 2024/06/23 19:58:29 by emgul            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,9 @@ RM				=	rm -rf
 LIBFT_PATH		=	lib/libft/
 LIBFT			=	$(LIBFT_PATH)libft.a
 
-MLX				=	lib/minilibx-linux/libmlx.a
+MLX_PATH		=	lib/minilibx/
+MLX				=	$(MLX_PATH)libmlx.a
+
 
 FILES_PATH		=	src/mandatory/
 BONUS_FILES_PATH=	src/bonus/
@@ -74,13 +76,16 @@ VALGRIND_PARAMS	=	--leak-check=full --show-leak-kinds=all --track-origins=yes
 .c.o:
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
 	@gcc $(OBJS) -o $(NAME) $(LIBFT) $(MLX) -lXext -lX11 -lm -lbsd
 	@echo "$(GREEN)-== $(NAME) created! ==-$(DEFAULT)"
 	@make --no-print-directory clean
 
 $(LIBFT):
 	@make --no-print-directory $(MFLAGS) $(LIBFT_PATH)
+
+$(MLX):
+	@make --no-print-directory $(MFLAGS) $(MLX_PATH)
 
 check-leaks: all
 	@make --no-print-directory re
@@ -96,7 +101,7 @@ check-leaks-bonus: all
 
 all: $(NAME)
 
-bonus: $(LIBFT) $(BONUS_OBJS)
+bonus: $(LIBFT) $(MLX) $(BONUS_OBJS)
 	@gcc $(BONUS_OBJS) -o $(NAME) $(LIBFT) $(MLX) -lXext -lX11 -lm -lbsd
 	@echo "$(GREEN)-== $(NAME) created! ==-$(DEFAULT)"
 	@make --no-print-directory clean
@@ -118,7 +123,7 @@ re: fclean all
 
 re-bonus: fclean bonus
 
-.PHONY: all clean fclean re bonus check-leak libclean
+.PHONY: all clean fclean re bonus check-leak libclean check-leaks-bonus re-bonus check-leaks
 
 # ANSI COLOR CODES
 DEFAULT = \033[0m

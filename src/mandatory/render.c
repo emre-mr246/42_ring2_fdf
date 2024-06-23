@@ -6,12 +6,12 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:42:49 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 06:33:29 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/23 19:53:20 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fdf.h"
-#include "../../lib/minilibx-linux/mlx.h"
+#include "../../lib/minilibx/mlx.h"
 #include "../../inc/color.h"
 
 static void	render_line(t_fdf *fdf, t_point start_point, t_point end_point)
