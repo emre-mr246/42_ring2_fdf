@@ -6,11 +6,11 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 22:36:38 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/21 23:58:22 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 21:08:16 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../../inc/fdf_bonus.h"
 #include <math.h>
 
 static void	calculate_trig(float angle, float *cos_ang, float *sin_ang)

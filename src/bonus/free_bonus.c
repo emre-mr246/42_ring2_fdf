@@ -6,17 +6,32 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:14:28 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/23 19:53:28 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 00:41:04 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../../inc/fdf_bonus.h"
 #include "../../lib/minilibx/mlx.h"
 #include <stdlib.h>
 
 static void	free_matrix(t_point **matrix, int height)
 {
 	t_point	**row;
+
+	if (!matrix)
+		return ;
+	row = matrix;
+	while (height--)
+	{
+		free(*row);
+		row++;
+	}
+	free(matrix);
+}
+
+static void	free_color_matrix(int **matrix, int height)
+{
+	int	**row;
 
 	if (!matrix)
 		return ;
@@ -71,6 +86,8 @@ void	free_all(t_fdf *fdf)
 	{
 		if (fdf->map->matrix)
 			free_matrix(fdf->map->matrix, fdf->map->height);
+		if (fdf->map->matrix_color)
+			free_color_matrix(fdf->map->matrix_color, fdf->map->height);
 		free(fdf->map);
 	}
 	free_mlx(fdf);

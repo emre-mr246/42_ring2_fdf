@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:34:45 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 05:59:08 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 22:50:58 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,31 @@ static int	get_width(char *map_name, t_fdf *fdf)
 	return (width);
 }
 
+void	handle_color_for_height(t_fdf *fdf)
+{
+	t_point	**point;
+	int		x;
+	int		y;
+	int		clr;
+	double	relative_z;
+
+	clr = fdf->map->max_z - fdf->map->min_z;
+	point = fdf->map->matrix;
+	x = 0;
+	while (x < fdf->map->height)
+	{
+		y = 0;
+		while (y < fdf->map->width)
+		{
+			relative_z = (double)(point[x][y].z - fdf->map->min_z) / clr;
+			point[x][y].color = \
+			create_rgb(0, 255 - (int)(255.0 * relative_z), 0);
+			y++;
+		}
+		x++;
+	}
+}
+
 static void	center_to_origin(t_map *map)
 {
 	t_point	*point;
@@ -100,5 +125,6 @@ void	create_map(t_fdf *fdf)
 	init_matrix(fdf, fdf->map);
 	get_matrix(fdf);
 	center_to_origin(fdf->map);
-	fdf->map->min_z_clr = fdf->map->min_z;
+	if (!fdf->map->has_color)
+		handle_color_for_height(fdf);
 }

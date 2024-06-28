@@ -6,7 +6,7 @@
 #    By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 07:09:36 by emgul             #+#    #+#              #
-#    Updated: 2024/06/23 20:03:06 by emgul            ###   ########.fr        #
+#    Updated: 2024/06/28 23:56:05 by emgul            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,11 +41,13 @@ BONUS_FILES		=	cam	\
 					matrix	\
 					menu	\
 					menu2	\
+					menu3	\
 					parameters	\
 					projection	\
 					render	\
 					rotate	\
-					utils
+					utils	\
+					help
 
 NAME			=	fdf
 

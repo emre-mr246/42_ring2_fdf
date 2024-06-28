@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:37:07 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 06:33:37 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 21:10:01 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,9 @@ void	put_pixel(t_fdf *fdf, int x, int y, int color)
 		exit_with_error(ERR_COORD, fdf);
 	pixel = fdf->img->data + (y * fdf->img->line_len) + (x * bytes_per_pixel);
 	*(unsigned int *)pixel = color;
+}
+
+int	create_rgb(int red, int green, int blue)
+{
+	return ((red << 16) | (green << 8) | blue);
 }

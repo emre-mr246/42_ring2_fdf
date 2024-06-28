@@ -6,12 +6,12 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 18:53:19 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 05:58:35 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 23:44:30 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/message.h"
-#include "../../inc/fdf.h"
+#include "../../inc/fdf_bonus.h"
+#include "../../inc/message_bonus.h"
 #include <X11/keysym.h>
 #include <fcntl.h>
 #include <math.h>
@@ -63,30 +63,32 @@ static void	handle_cam(t_fdf *fdf, int key)
 	else if (key == XK_e)
 		fdf->cam->rotate_z += 0.05;
 	else if (key == XK_l)
-		fdf->cam->z_scale_factor = 0.0001;
+		fdf->cam->z_scale_factor = 0.000001;
 }
 
 static void	handle_min_and_max_z(int key, t_fdf *fdf)
 {
 	if (key == XK_g)
 	{
-		if (fdf->map->min_z < fdf->map->max_z)
-		{
+		if (fdf->cam->color_mode == 0 && fdf->map->min_z_clr < fdf->map->mid_z)
 			fdf->map->min_z_clr += 1;
-			handle_color_flag(fdf);
-		}
+		else if (fdf->cam->color_mode == 1 && fdf->map->mid_z < fdf->map->max_z)
+			fdf->map->mid_z += 1;
 	}
 	else if (key == XK_h)
 	{
-		fdf->map->min_z_clr -= 1;
-		handle_color_flag(fdf);
+		if (fdf->cam->color_mode == 0 && fdf->map->min_z_clr > fdf->map->min_z)
+			fdf->map->min_z_clr -= 1;
+		else if (fdf->cam->color_mode == 1
+			&& fdf->map->mid_z > fdf->map->min_z_clr)
+			fdf->map->mid_z -= 1;
 	}
+	handle_color_flag(fdf);
 }
 
 static void	handle_projection(t_fdf *fdf, int key)
 {
-	if (key == XK_1 || key == XK_2 || key == XK_3 || key == XK_4 || key == XK_5)
-		reset_cam(fdf);
+	reset_cam(fdf);
 	if (key == XK_1)
 		fdf->cam->projection = ISOMETRIC;
 	else if (key == XK_2)
@@ -115,9 +117,15 @@ int	handle_keypress(int key, t_fdf *fdf)
 		reset_cam(fdf);
 	else if (key == XK_i)
 		fdf->cam->anti_aliasing = !fdf->cam->anti_aliasing;
-	handle_min_and_max_z(key, fdf);
-	handle_color(fdf, key);
-	handle_projection(fdf, key);
+	if (key == XK_g || key == XK_h || key == XK_c || key == XK_v || key == XK_b
+		|| key == XK_n || key == XK_j)
+	{
+		fdf->cam->color_mode_activated = 1;
+		handle_min_and_max_z(key, fdf);
+		handle_color(fdf, key);
+	}
+	if (key == XK_1 || key == XK_2 || key == XK_3 || key == XK_4 || key == XK_5)
+		handle_projection(fdf, key);
 	handle_cam(fdf, key);
 	return (0);
 }

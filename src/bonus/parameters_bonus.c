@@ -6,12 +6,12 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 08:42:24 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 05:58:47 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 00:19:09 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/message.h"
-#include "../../inc/fdf.h"
+#include "../../inc/message_bonus.h"
+#include "../../inc/fdf_bonus.h"
 #include "../../lib/libft/libft.h"
 
 static int	is_hex(char *str)
@@ -46,6 +46,9 @@ static void	check_parameters(char **argv, t_fdf *fdf)
 		else if ((ft_strncmp(*argv, "--low-color", 11) == 0 || ft_strncmp(*argv,
 					"-CL", 3) == 0) && is_hex(*(argv + 1)))
 			fdf->flag->low_color = ft_atoi_base(*(++argv) + 2, HEX_BASE);
+		else if ((ft_strncmp(*argv, "--mid-color", 11) == 0
+				|| ft_strncmp(*argv, "-CM", 3) == 0) && is_hex(*(argv + 1)))
+			fdf->flag->mid_color = ft_atoi_base(*(++argv) + 2, HEX_BASE);
 		else if ((ft_strncmp(*argv, "--high-color", 12) == 0
 				|| ft_strncmp(*argv, "-CH", 3) == 0) && is_hex(*(argv + 1)))
 			fdf->flag->high_color = ft_atoi_base(*(++argv) + 2, HEX_BASE);
@@ -64,7 +67,10 @@ void	handle_parameters(t_fdf *fdf, char **argv)
 	while (*argv)
 	{
 		if (fdf->flag->help == 1)
-			exit_with_free(MSG_HELP, fdf);
+		{
+			print_help();
+			exit_with_free(NULL, fdf);
+		}
 		argv++;
 	}
 }

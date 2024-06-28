@@ -6,12 +6,12 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:41:53 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/23 19:53:41 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 23:44:49 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/color.h"
-#include "../../inc/fdf.h"
+#include "../../inc/color_bonus.h"
+#include "../../inc/fdf_bonus.h"
 #include "../../lib/minilibx/mlx.h"
 #include "../../lib/libft/libft.h"
 
@@ -35,20 +35,22 @@ void	show_fdf_ascii_art(t_fdf *fdf)
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		loc;
 
+	loc = 30;
 	mlx_ptr = fdf->mlx_ptr;
 	win_ptr = fdf->win_ptr;
-	mlx_string_put(mlx_ptr, win_ptr, 28, 30, HEX_BLUE, \
+	mlx_string_put(mlx_ptr, win_ptr, 28, loc, HEX_BLUE, \
 	"    __________  ______");
-	mlx_string_put(mlx_ptr, win_ptr, 28, 40, HEX_BLUE, \
+	mlx_string_put(mlx_ptr, win_ptr, 28, loc + 10, HEX_BLUE, \
 	"   / ____/ __ \\/ ____/");
-	mlx_string_put(mlx_ptr, win_ptr, 28, 50, HEX_BLUE, \
+	mlx_string_put(mlx_ptr, win_ptr, 28, loc + 20, HEX_BLUE, \
 	"  / /_  / / / //_");
-	mlx_string_put(mlx_ptr, win_ptr, 28, 60, HEX_BLUE, \
+	mlx_string_put(mlx_ptr, win_ptr, 28, loc + 30, HEX_BLUE, \
 	" / __/ / /_// __/");
-	mlx_string_put(mlx_ptr, win_ptr, 28, 70, HEX_BLUE, \
+	mlx_string_put(mlx_ptr, win_ptr, 28, loc + 40, HEX_BLUE, \
 	"/_/  /_____/_/");
-	mlx_string_put(mlx_ptr, win_ptr, 23, 85, HEX_LBLUE, \
+	mlx_string_put(mlx_ptr, win_ptr, 23, loc + 55, HEX_LBLUE, \
 	"_________________________");
 }
 
@@ -56,26 +58,29 @@ void	show_instructions(t_fdf *fdf)
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		loc;
 
+	loc = 210;
 	mlx_ptr = fdf->mlx_ptr;
 	win_ptr = fdf->win_ptr;
-	mlx_string_put(mlx_ptr, win_ptr, 18, 210, HEX_YELLOW, \
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc, HEX_YELLOW, \
 	"Increase Scale Z - [Z]");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 225, HEX_YELLOW, \
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 15, HEX_YELLOW, \
 	"Decrease Scale Z - [X]");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 240, HEX_YELLOW, \
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 30, HEX_YELLOW, \
 	"Make Flat [L]");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 265, HEX_ORANGE, \
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 55, HEX_ORANGE, \
 	"Rotate Up - [Up Arrow]");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 280, HEX_ORANGE, \
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 70, HEX_ORANGE, \
 	"Rotate Down - [Down A.]");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 295, HEX_ORANGE, \
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 85, HEX_ORANGE, \
 	"Rotate Left - [Left A.]");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 310, HEX_ORANGE, \
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 100, HEX_ORANGE, \
 	"Rotate Right - [Right A.]");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 335, HEX_PRED, "Zoom In - [Y]");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 350, HEX_PRED, "Zoom Out - [U]");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 375, HEX_PURPLE, "Reset Cam - [R]");
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 125, HEX_PRED, "Zoom In - [Y]");
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 140, HEX_PRED, "Zoom Out - [U]");
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 165, HEX_PURPLE, \
+	"Reset Cam - [R]");
 }
 
 void	render_menu(t_fdf *fdf)

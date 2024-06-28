@@ -6,44 +6,27 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:52:05 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/23 19:53:43 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 23:44:53 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/color.h"
-#include "../../inc/fdf.h"
+#include "../../inc/color_bonus.h"
+#include "../../inc/fdf_bonus.h"
 #include "../../lib/minilibx/mlx.h"
 #include <stdlib.h>
 
-void	show_color_mode(t_fdf *fdf)
-{
-	char	*str;
-
-	str = NULL;
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 500, HEX_WHITE,
-		"Color Mode: ");
-	if (fdf->cam->color_mode == 0)
-		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 90, 500, HEX_GREEN, "Low");
-	else
-		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 90, 500, HEX_RED, "High");
-	str = itoa_with_prefix_suffix((int)fdf->map->min_z_clr, "Min Z: ",
-			" [G][H]");
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 525, HEX_CYAN, str);
-	free(str);
-	str = itoa_with_prefix_suffix((int)fdf->map->max_z, "Max Z: ", NULL);
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 540, HEX_CYAN, str);
-	free(str);
-}
-
 void	show_anti_aliasing(t_fdf *fdf)
 {
+	int	loc;
+
+	loc = 575;
 	if (fdf->cam->anti_aliasing == 1)
-		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 105, 565,
+		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 105, loc,
 			HEX_GREEN, "ON");
 	else
-		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 105, 565,
+		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 105, loc,
 			HEX_RED, "OFF");
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 565, HEX_WHITE,
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, loc, HEX_WHITE,
 		"Anti-Aliasing: ");
 }
 
@@ -72,46 +55,54 @@ void	show_move(t_fdf *fdf)
 	"Move [WASD] / Rotate [QE]");
 }
 
+static void	create_rgb_menu(int color, int *r, int *g, int *b)
+{
+	*r = (color >> 16) & 0xFF;
+	*g = (color >> 8) & 0xFF;
+	*b = color & 0xFF;
+}
+
 void	show_color(t_fdf *fdf)
 {
-	t_rgb	rgb;
+	int		r;
+	int		g;
+	int		b;
+	char	*str;
+	int		loc;
 
+	loc = 455;
 	if (fdf->cam->color_mode == 0)
-	{
-		rgb.r = (fdf->flag->low_color >> 16) & 0xFF;
-		rgb.g = (fdf->flag->low_color >> 8) & 0xFF;
-		rgb.b = fdf->flag->low_color & 0xFF;
-	}
-	else
-	{
-		rgb.r = (fdf->flag->high_color >> 16) & 0xFF;
-		rgb.g = (fdf->flag->high_color >> 8) & 0xFF;
-		rgb.b = fdf->flag->high_color & 0xFF;
-	}
-	rgb.color = itoa_with_prefix_suffix(rgb.r, "R: ", " [C]");
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 455, HEX_RED, rgb.color);
-	free(rgb.color);
-	rgb.color = itoa_with_prefix_suffix(rgb.g, "G: ", " [V]");
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 470, HEX_GREEN, rgb.color);
-	free(rgb.color);
-	rgb.color = itoa_with_prefix_suffix(rgb.b, "B: ", " [B]");
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 485, HEX_BLUE, rgb.color);
-	free(rgb.color);
+		create_rgb_menu(fdf->flag->low_color, &r, &g, &b);
+	else if (fdf->cam->color_mode == 1)
+		create_rgb_menu(fdf->flag->mid_color, &r, &g, &b);
+	else if (fdf->cam->color_mode == 2)
+		create_rgb_menu(fdf->flag->high_color, &r, &g, &b);
+	str = itoa_with_prefix_suffix(r, "R: ", " [C]");
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, loc, HEX_RED, str);
+	free(str);
+	str = itoa_with_prefix_suffix(g, "G: ", " [V]");
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, loc + 15, HEX_GREEN, str);
+	free(str);
+	str = itoa_with_prefix_suffix(b, "B: ", " [B]");
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, loc + 30, HEX_BLUE, str);
+	free(str);
 }
 
 void	show_location(t_fdf *fdf)
 {
 	char	*coord;
+	int		loc;
 
-	coord = itoa_with_prefix_suffix(fdf->cam->x_offset - (WIN_WIDTH / 2) - 90,
+	loc = 400;
+	coord = itoa_with_prefix_suffix(fdf->cam->x_offset - (WIN_WIDTH / 2) - 95,
 			"X Offset: ", NULL);
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 400, HEX_LBLUE, coord);
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, loc, HEX_LBLUE, coord);
 	free(coord);
 	coord = itoa_with_prefix_suffix((int)fdf->cam->y_offset - (WIN_HEIGHT / 2),
 			"Y Offset: ", NULL);
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 415, HEX_LBLUE, coord);
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, loc + 15, HEX_LBLUE, coord);
 	free(coord);
 	coord = itoa_with_prefix_suffix(fdf->cam->rotate_z * 20, "Rotate: ", NULL);
-	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, 430, HEX_LBLUE, coord);
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, loc + 30, HEX_LBLUE, coord);
 	free(coord);
 }

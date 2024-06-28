@@ -6,18 +6,13 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 05:12:06 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 05:55:01 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 21:07:21 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../../inc/fdf_bonus.h"
 #include <math.h>
 #include <stdlib.h>
-
-static int	create_rgb(int red, int green, int blue)
-{
-	return ((red << 16) | (green << 8) | blue);
-}
 
 static int	interpolate_color(t_point start, t_point end, float gradient)
 {

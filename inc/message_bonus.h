@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   message.h                                          :+:      :+:    :+:   */
+/*   message_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:07:46 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 00:28:44 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 00:27:56 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MESSAGE_H
-# define MESSAGE_H
+#ifndef MESSAGE_BONUS_H
+# define MESSAGE_BONUS_H
 
 // ERROR
 # define ERR_ARG "Usage: ./fdf [.fdf::FILE]\n For more detailed information: -H"

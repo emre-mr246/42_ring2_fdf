@@ -6,11 +6,11 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:22:57 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/21 22:43:44 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 23:07:01 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../../inc/fdf_bonus.h"
 #include <X11/keysym.h>
 
 void	set_rgb(t_fdf *fdf, int *r, int *g, int *b)
@@ -21,7 +21,13 @@ void	set_rgb(t_fdf *fdf, int *r, int *g, int *b)
 		*g = (fdf->flag->low_color >> 8) & 0xFF;
 		*b = fdf->flag->low_color & 0xFF;
 	}
-	else
+	else if (fdf->cam->color_mode == 1)
+	{
+		*r = (fdf->flag->mid_color >> 16) & 0xFF;
+		*g = (fdf->flag->mid_color >> 8) & 0xFF;
+		*b = fdf->flag->mid_color & 0xFF;
+	}
+	else if (fdf->cam->color_mode == 2)
 	{
 		*r = (fdf->flag->high_color >> 16) & 0xFF;
 		*g = (fdf->flag->high_color >> 8) & 0xFF;
@@ -31,40 +37,67 @@ void	set_rgb(t_fdf *fdf, int *r, int *g, int *b)
 
 static void	increment_rgb(t_fdf *fdf, int key)
 {
-	t_rgb	rgb;
+	int	r;
+	int	g;
+	int	b;
+	int	new_color;
 
-	set_rgb(fdf, &rgb.r, &rgb.g, &rgb.b);
+	set_rgb(fdf, &r, &g, &b);
 	if (key == XK_c)
-	{
-		rgb.r += 5;
-		if (rgb.r > 255)
-			rgb.r = 0;
-	}
+		r = (r + 5) % 256;
 	else if (key == XK_v)
-	{
-		rgb.g += 5;
-		if (rgb.g > 255)
-			rgb.g = 0;
-	}
+		g = (g + 5) % 256;
 	else if (key == XK_b)
-	{
-		rgb.b += 5;
-		if (rgb.b > 255)
-			rgb.b = 0;
-	}
+		b = (b + 5) % 256;
+	new_color = (r << 16) | (g << 8) | b;
 	if (fdf->cam->color_mode == 0)
-		fdf->flag->low_color = (rgb.r << 16) | (rgb.g << 8) | rgb.b;
-	else
-		fdf->flag->high_color = (rgb.r << 16) | (rgb.g << 8) | rgb.b;
+		fdf->flag->low_color = new_color;
+	else if (fdf->cam->color_mode == 1)
+		fdf->flag->mid_color = new_color;
+	else if (fdf->cam->color_mode == 2)
+		fdf->flag->high_color = new_color;
+}
+
+void	restore_color(t_fdf *fdf)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < fdf->map->height)
+	{
+		j = 0;
+		while (j < fdf->map->width)
+		{
+			fdf->map->matrix[i][j].color = fdf->map->matrix_color[i][j];
+			j++;
+		}
+		i++;
+	}
 }
 
 void	handle_color(t_fdf *fdf, int key)
 {
 	if (key == XK_n)
-		fdf->cam->color_mode = !fdf->cam->color_mode;
+	{
+		if (fdf->cam->color_mode == 0)
+			fdf->cam->color_mode = 1;
+		else if (fdf->cam->color_mode == 1)
+			fdf->cam->color_mode = 2;
+		else if (fdf->cam->color_mode == 2)
+			fdf->cam->color_mode = 0;
+	}
 	if (key == XK_c || key == XK_v || key == XK_b)
 	{
 		increment_rgb(fdf, key);
 		handle_color_flag(fdf);
+	}
+	if (key == XK_j)
+	{
+		fdf->cam->color_mode_activated = !fdf->cam->color_mode_activated;
+		fdf->flag->low_color = 0;
+		fdf->flag->mid_color = 0;
+		fdf->flag->high_color = 0;
+		restore_color(fdf);
 	}
 }

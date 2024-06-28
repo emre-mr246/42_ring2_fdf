@@ -6,11 +6,11 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:56:07 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 05:44:33 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 21:08:09 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../../inc/fdf_bonus.h"
 #include <math.h>
 
 static t_point	calculate_isometric(t_point *point, float z_scale_factor)

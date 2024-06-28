@@ -6,13 +6,14 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:59:44 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 05:59:10 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 00:30:27 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/message.h"
 #include "../../inc/fdf.h"
 #include "../../lib/libft/libft.h"
+#include "../../inc/color.h"
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -35,7 +36,10 @@ static void	fill_matrix(t_fdf *fdf, char **split_line, int height)
 			fdf->map->min_z = point->z;
 		color_str = ft_strchr(split_line[i], ',');
 		if (color_str)
+		{
 			point->color = ft_atoi_base(color_str + 3, HEX_BASE);
+			fdf->map->has_color = 1;
+		}
 		else
 			point->color = HEX_WHITE;
 		i++;

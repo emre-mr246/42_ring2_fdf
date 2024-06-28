@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 14:25:23 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/23 19:53:11 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 00:37:12 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../../inc/fdf.h"
 #include "../../lib/minilibx/mlx.h"
 #include <stdlib.h>
+#include <limits.h>
 
 static void	init_map(t_fdf *fdf)
 {
@@ -24,9 +25,10 @@ static void	init_map(t_fdf *fdf)
 		exit_with_error(ERR_MALLOC, fdf);
 	map->width = 0;
 	map->height = 0;
-	map->max_z = -424242.42;
-	map->min_z = 424242.42;
+	map->max_z = INT_MIN;
+	map->min_z = INT_MAX;
 	map->matrix = NULL;
+	map->has_color = 0;
 	fdf->map = map;
 }
 

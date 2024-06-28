@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:53:07 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/21 05:56:35 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 23:05:18 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	set_z_scale_factor(t_fdf *fdf)
 		cam->z_scale_factor = 0.005;
 	else if (value >= 300)
 		cam->z_scale_factor = 0.05;
-	cam->z_scale_factor += 0.001;
+	cam->z_scale_factor += 0.000001;
 }

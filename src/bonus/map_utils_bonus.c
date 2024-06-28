@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   map_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:58:44 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/21 05:38:56 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 22:32:03 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../../inc/fdf_bonus.h"
 #include "../../lib/libft/libft.h"
 #include <math.h>
 
@@ -56,4 +56,30 @@ void	scale_map(t_fdf *fdf, t_point *start_point, t_point *end_point)
 	end_point->x *= scale;
 	end_point->y *= scale;
 	end_point->z *= scale * (value * 0.01);
+}
+
+void	handle_color_flag(t_fdf *fdf)
+{
+	t_point	**point;
+	int		x;
+	int		y;
+
+	point = fdf->map->matrix;
+	x = 0;
+	while (x < fdf->map->height)
+	{
+		y = 0;
+		while (y < fdf->map->width)
+		{
+			if (point[x][y].z <= fdf->map->min_z_clr)
+				point[x][y].color = fdf->flag->low_color;
+			else if (point[x][y].z > fdf->map->min_z_clr
+				&& point[x][y].z <= fdf->map->mid_z)
+				point[x][y].color = fdf->flag->mid_color;
+			else
+				point[x][y].color = fdf->flag->high_color;
+			y++;
+		}
+		x++;
+	}
 }

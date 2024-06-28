@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   color_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:59:07 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 00:30:11 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 00:29:13 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef COLOR_BONUS_H
+# define COLOR_BONUS_H
 
 // HEX COLORS
 # define HEX_BORDER_CLR 0x222222

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cam.c                                              :+:      :+:    :+:   */
+/*   cam_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:53:07 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/21 05:39:21 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 00:11:42 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fdf.h"
+#include "../../inc/fdf_bonus.h"
 #include <math.h>
 #include <stdlib.h>
 
@@ -48,7 +48,7 @@ void	set_z_scale_factor(t_fdf *fdf)
 		cam->z_scale_factor = 0.005;
 	else if (value >= 300)
 		cam->z_scale_factor = 0.05;
-	cam->z_scale_factor += 0.001;
+	cam->z_scale_factor += 0.000001;
 }
 
 void	reset_cam(t_fdf *fdf)
@@ -56,7 +56,7 @@ void	reset_cam(t_fdf *fdf)
 	fdf->cam->rotate_x = 0;
 	fdf->cam->rotate_y = 0;
 	fdf->cam->rotate_z = 0;
-	fdf->cam->x_offset = (WIN_WIDTH / 2) + 90;
+	fdf->cam->x_offset = (WIN_WIDTH / 2) + 95;
 	fdf->cam->y_offset = (WIN_HEIGHT / 2);
 	set_z_scale_factor(fdf);
 	fdf->cam->scale = get_scale_factor(fdf->map);

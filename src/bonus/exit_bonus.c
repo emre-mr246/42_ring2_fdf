@@ -6,12 +6,12 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:14:31 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/22 05:58:27 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/28 23:57:08 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/message.h"
-#include "../../inc/fdf.h"
+#include "../../inc/message_bonus.h"
+#include "../../inc/fdf_bonus.h"
 #include "../../lib/libft/libft.h"
 
 void	exit_with_error(char *error_msg, t_fdf *fdf)
@@ -24,7 +24,8 @@ void	exit_with_error(char *error_msg, t_fdf *fdf)
 
 void	exit_with_free(char *exit_msg, t_fdf *fdf)
 {
-	ft_putendl_fd(exit_msg, 1);
+	if (exit_msg)
+		ft_putendl_fd(exit_msg, 1);
 	if (fdf)
 		free_all(fdf);
 	exit(EXIT_SUCCESS);

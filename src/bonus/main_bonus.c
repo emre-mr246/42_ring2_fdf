@@ -6,12 +6,12 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 12:21:54 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/23 19:53:36 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 00:20:54 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/message.h"
-#include "../../inc/fdf.h"
+#include "../../inc/message_bonus.h"
+#include "../../inc/fdf_bonus.h"
 #include "../../lib/minilibx/mlx.h"
 #include <X11/X.h>
 #include <stdlib.h>
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 {
 	t_fdf	*fdf;
 
-	if (argc <= 1 || argc > 7)
+	if (argc <= 1 || argc > 10)
 		exit_with_error(ERR_ARG, NULL);
 	if (WIN_WIDTH < 1080 || WIN_HEIGHT < 720 || WIN_WIDTH > 2560
 		|| WIN_HEIGHT > 1440)
