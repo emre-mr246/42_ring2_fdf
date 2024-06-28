@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 22:49:52 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 00:26:14 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 01:54:46 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void	show_color_mode(t_fdf *fdf)
 	free(str);
 	str = itoa_with_prefix_suffix((int)fdf->map->max_z, "Max Z: ", NULL);
 	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, loc + 55, HEX_CYAN, str);
-	display_color_mode_status(fdf, loc + 25);
+	display_color_mode_status(fdf, loc - 45);
 	free(str);
 }
