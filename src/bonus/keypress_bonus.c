@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 18:53:19 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/30 02:00:47 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/30 02:28:16 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,6 @@
 #include <X11/keysym.h>
 #include <fcntl.h>
 #include <math.h>
-
-static float	get_multiplier(t_map *map)
-{
-	float	value;
-
-	if (map->max_z > map->min_z)
-		value = fabs(map->max_z - map->min_z);
-	else
-		value = fabs(map->min_z - map->max_z);
-	if (value >= 0 && value < 6)
-		return (5);
-	else if (value >= 6 && value < 10)
-		return (3.5);
-	else if (value == 10)
-		return (1);
-	else if (value > 10 && value < 20)
-		return (3);
-	else if (value >= 20 && value < 50)
-		return (0.4);
-	else if (value >= 50 && value < 100)
-		return (0.5);
-	else if (value >= 100 && value < 300)
-		return (0.005);
-	else if (value >= 300)
-		return (0.05);
-}
 
 static void	handle_cam(t_fdf *fdf, int key)
 {
@@ -98,9 +72,9 @@ void	handle_z_scale(int key, t_fdf *fdf)
 		fdf->cam->rotate_mode = !fdf->cam->rotate_mode;
 	}
 	if (key == XK_z)
-		fdf->cam->z_scale_factor += get_multiplier(fdf->map) * 0.2;
+		fdf->cam->z_scale_factor += fdf->cam->z_scale_factor_keypress;
 	else if (key == XK_x)
-		fdf->cam->z_scale_factor -= get_multiplier(fdf->map) * 0.2;
+		fdf->cam->z_scale_factor -= fdf->cam->z_scale_factor_keypress;
 }
 
 int	handle_keypress(int key, t_fdf *fdf)
@@ -110,9 +84,9 @@ int	handle_keypress(int key, t_fdf *fdf)
 	if (key == XK_z || key == XK_x || key == XK_Control_L)
 		handle_z_scale(key, fdf);
 	else if (key == XK_y)
-		fdf->cam->scale += get_multiplier(fdf->map);
+		fdf->cam->scale += fdf->cam->scale * 0.1;
 	else if (key == XK_u)
-		fdf->cam->scale -= get_multiplier(fdf->map);
+		fdf->cam->scale -= fdf->cam->scale * 0.1;
 	else if (key == XK_r)
 		reset_cam(fdf);
 	else if (key == XK_i)

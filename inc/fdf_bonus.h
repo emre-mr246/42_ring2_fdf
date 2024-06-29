@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:25:39 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 23:38:32 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/30 02:22:14 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_cam
 	float			x_offset;
 	float			y_offset;
 	float			z_scale_factor;
+	float			z_scale_factor_keypress;
 	int				projection;
 	float			rotate_x;
 	float			rotate_y;
