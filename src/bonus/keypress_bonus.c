@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 18:53:19 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 23:22:57 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/30 02:00:47 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,21 @@ static float	get_multiplier(t_map *map)
 	else
 		value = fabs(map->min_z - map->max_z);
 	if (value >= 0 && value < 6)
-		return (2.5);
+		return (5);
 	else if (value >= 6 && value < 10)
-		return (1.5);
+		return (3.5);
+	else if (value == 10)
+		return (1);
+	else if (value > 10 && value < 20)
+		return (3);
 	else if (value >= 20 && value < 50)
-		return (0.5);
+		return (0.4);
 	else if (value >= 50 && value < 100)
-		return (0.2);
+		return (0.5);
 	else if (value >= 100 && value < 300)
-		return (0.01);
+		return (0.005);
 	else if (value >= 300)
 		return (0.05);
-	else
-		return (1);
 }
 
 static void	handle_cam(t_fdf *fdf, int key)
@@ -51,13 +53,13 @@ static void	handle_cam(t_fdf *fdf, int key)
 	else if (key == XK_s)
 		fdf->cam->y_offset += 5;
 	else if (key == XK_Up)
-		fdf->cam->rotate_x += 0.05;
+		fdf->cam->rotate_x += 0.1;
 	else if (key == XK_Down)
-		fdf->cam->rotate_x -= 0.05;
+		fdf->cam->rotate_x -= 0.1;
 	else if (key == XK_Left)
-		fdf->cam->rotate_y -= get_multiplier(fdf->map) * 0.05;
+		fdf->cam->rotate_y -= 0.1;
 	else if (key == XK_Right)
-		fdf->cam->rotate_y += get_multiplier(fdf->map) * 0.05;
+		fdf->cam->rotate_y += 0.1;
 	else if (key == XK_q)
 		fdf->cam->rotate_z -= 0.05;
 	else if (key == XK_e)
