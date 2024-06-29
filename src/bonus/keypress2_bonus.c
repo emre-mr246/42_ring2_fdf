@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:22:57 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 23:14:23 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/30 02:39:15 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	handle_reset_color_mode(t_fdf *fdf, int key)
 	if (key == XK_j)
 	{
 		if (!fdf->map->has_color)
-			fdf->map->has_color = 1;
+			fdf->map->has_color = 0;
 		fdf->cam->color_mode_activated = !fdf->cam->color_mode_activated;
 		fdf->flag->low_color = 0;
 		fdf->flag->mid_color = 0;
