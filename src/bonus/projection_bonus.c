@@ -6,20 +6,19 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:56:07 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/28 21:08:09 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 23:14:34 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fdf_bonus.h"
 #include <math.h>
 
-static t_point	calculate_isometric(t_point *point, float z_scale_factor)
+static t_point	calculate_isometric(t_point *p, float z_scale_factor)
 {
 	t_point	new_p;
 
-	new_p.x = (point->x - point->y) * cosf(COS_30);
-	new_p.y = ((point->x + point->y) * sinf(SIN_30)) \
-	- (point->z * z_scale_factor);
+	new_p.x = (p->x - p->y) * cosf(COS_30);
+	new_p.y = (p->x + p->y) * sinf(SIN_30) - p->z * z_scale_factor;
 	return (new_p);
 }
 
@@ -57,7 +56,7 @@ void	oblique(t_fdf *fdf, t_point *start_p, t_point *end_p)
 	end_p->y = new_end.y;
 }
 
-void	perspective_top(t_fdf *fdf, t_point *start_p, t_point *end_p)
+void	perspective_bottom(t_fdf *fdf, t_point *start_p, t_point *end_p)
 {
 	start_p->x = start_p->x / (1.0 + start_p->z
 			* (fdf->cam->z_scale_factor * 0.01));

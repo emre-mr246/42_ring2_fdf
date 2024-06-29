@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:34:45 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/28 23:44:40 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/30 00:00:52 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,11 +126,11 @@ void	create_map(t_fdf *fdf)
 	get_matrix(fdf);
 	fdf->map->mid_z = fdf->map->min_z + (fdf->map->max_z - fdf->map->min_z) / 2;
 	center_to_origin(fdf->map);
-	fdf->map->min_z_clr = fdf->map->min_z;
 	if (!fdf->map->has_color)
 		handle_color_for_height(fdf);
 	if (fdf->flag->low_color || fdf->flag->mid_color || fdf->flag->high_color)
 		handle_color_flag(fdf);
 	init_matrix_color(fdf, fdf->map);
 	copy_matrix_color(fdf);
+	fdf->map->min_z_clr = fdf->map->min_z;
 }

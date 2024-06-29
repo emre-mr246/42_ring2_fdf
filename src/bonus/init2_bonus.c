@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 18:25:44 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/28 23:44:27 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 19:27:21 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_cam(t_fdf *fdf)
 	cam->rotate_y = 0;
 	cam->rotate_z = 0;
 	cam->color_mode = 0;
+	cam->rotate_mode = 1;
 	cam->color_mode_activated = 0;
 	cam->anti_aliasing = 0;
 	fdf->cam = cam;

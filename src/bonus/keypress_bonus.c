@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 18:53:19 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/28 23:44:30 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 23:22:57 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,29 +86,27 @@ static void	handle_min_and_max_z(int key, t_fdf *fdf)
 	handle_color_flag(fdf);
 }
 
-static void	handle_projection(t_fdf *fdf, int key)
+void	handle_z_scale(int key, t_fdf *fdf)
 {
-	reset_cam(fdf);
-	if (key == XK_1)
-		fdf->cam->projection = ISOMETRIC;
-	else if (key == XK_2)
-		fdf->cam->projection = OBLIQUE;
-	else if (key == XK_3)
-		fdf->cam->projection = AXONOMETRIC;
-	else if (key == XK_4)
-		fdf->cam->projection = PERSPECTIVE_TOP;
-	else if (key == XK_5)
-		fdf->cam->projection = TOP;
+	if (key == XK_Control_L)
+	{
+		fdf->cam->rotate_x = 0;
+		fdf->cam->rotate_y = 0;
+		fdf->cam->rotate_z = 0;
+		fdf->cam->rotate_mode = !fdf->cam->rotate_mode;
+	}
+	if (key == XK_z)
+		fdf->cam->z_scale_factor += get_multiplier(fdf->map) * 0.2;
+	else if (key == XK_x)
+		fdf->cam->z_scale_factor -= get_multiplier(fdf->map) * 0.2;
 }
 
 int	handle_keypress(int key, t_fdf *fdf)
 {
 	if (key == XK_Escape)
 		exit_with_free(MSG_EXIT, fdf);
-	if (key == XK_z)
-		fdf->cam->z_scale_factor += get_multiplier(fdf->map) * 0.2;
-	else if (key == XK_x)
-		fdf->cam->z_scale_factor -= get_multiplier(fdf->map) * 0.2;
+	if (key == XK_z || key == XK_x || key == XK_Control_L)
+		handle_z_scale(key, fdf);
 	else if (key == XK_y)
 		fdf->cam->scale += get_multiplier(fdf->map);
 	else if (key == XK_u)
@@ -118,7 +116,7 @@ int	handle_keypress(int key, t_fdf *fdf)
 	else if (key == XK_i)
 		fdf->cam->anti_aliasing = !fdf->cam->anti_aliasing;
 	if (key == XK_g || key == XK_h || key == XK_c || key == XK_v || key == XK_b
-		|| key == XK_n || key == XK_j)
+		|| key == XK_n || key == XK_j || key == XK_m)
 	{
 		fdf->cam->color_mode_activated = 1;
 		handle_min_and_max_z(key, fdf);

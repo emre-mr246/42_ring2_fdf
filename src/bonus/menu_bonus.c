@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:41:53 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/28 23:44:49 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 23:44:28 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ void	show_projections(t_fdf *fdf)
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		loc;
 
+	loc = 110;
 	mlx_ptr = fdf->mlx_ptr;
 	win_ptr = fdf->win_ptr;
-	mlx_string_put(mlx_ptr, win_ptr, 18, 110, HEX_CYAN, " - VIEW -");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 125, HEX_LIME, "[1] isometric");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 140, HEX_LIME, "[2] oblique");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 155, HEX_LIME, "[3] axonometric");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 170, HEX_LIME,
-		"[4] perspective top view");
-	mlx_string_put(mlx_ptr, win_ptr, 18, 185, HEX_LIME, "[5] top view");
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc, HEX_CYAN, " - VIEW -");
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 15, HEX_LIME, "[1] isometric");
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 30, HEX_LIME, "[2] oblique");
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 45, HEX_LIME, "[3] axonometric");
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 60, HEX_LIME,
+		"[4] perspective bottom");
+	mlx_string_put(mlx_ptr, win_ptr, 18, loc + 75, HEX_LIME, "[5] top view");
 }
 
 void	show_fdf_ascii_art(t_fdf *fdf)
@@ -93,6 +95,7 @@ void	render_menu(t_fdf *fdf)
 	show_color_mode(fdf);
 	show_move(fdf);
 	show_anti_aliasing(fdf);
+	show_rotate_mode(fdf);
 	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 25, WIN_HEIGHT - 20, HEX_GREEN, \
 	"- Press [ESC] to exit -");
 }

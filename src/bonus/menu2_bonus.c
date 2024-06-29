@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:52:05 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/28 23:44:53 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 23:37:50 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	show_anti_aliasing(t_fdf *fdf)
 {
 	int	loc;
 
-	loc = 575;
+	loc = 640;
 	if (fdf->cam->anti_aliasing == 1)
 		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 105, loc,
-			HEX_GREEN, "ON");
+			HEX_GREEN, "ON [I]");
 	else
 		mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 105, loc,
-			HEX_RED, "OFF");
+			HEX_RED, "OFF [I]");
 	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 18, loc, HEX_WHITE,
 		"Anti-Aliasing: ");
 }

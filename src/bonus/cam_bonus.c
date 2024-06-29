@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:53:07 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 00:11:42 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 23:15:23 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	set_z_scale_factor(t_fdf *fdf)
 	if (value >= 0 && value < 6)
 		cam->z_scale_factor = 5;
 	else if (value >= 6 && value < 10)
-		cam->z_scale_factor = 4;
+		cam->z_scale_factor = 3.5;
 	else if (value == 10)
 		cam->z_scale_factor = 1;
 	else if (value > 10 && value < 20)

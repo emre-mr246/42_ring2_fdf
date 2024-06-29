@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 03:22:57 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/28 23:07:01 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 23:14:23 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,21 @@ void	restore_color(t_fdf *fdf)
 	}
 }
 
+static void	handle_reset_color_mode(t_fdf *fdf, int key)
+{
+	if (key == XK_j)
+	{
+		if (!fdf->map->has_color)
+			fdf->map->has_color = 1;
+		fdf->cam->color_mode_activated = !fdf->cam->color_mode_activated;
+		fdf->flag->low_color = 0;
+		fdf->flag->mid_color = 0;
+		fdf->flag->high_color = 0;
+		handle_color_flag(fdf);
+		restore_color(fdf);
+	}
+}
+
 void	handle_color(t_fdf *fdf, int key)
 {
 	if (key == XK_n)
@@ -92,12 +107,7 @@ void	handle_color(t_fdf *fdf, int key)
 		increment_rgb(fdf, key);
 		handle_color_flag(fdf);
 	}
-	if (key == XK_j)
-	{
-		fdf->cam->color_mode_activated = !fdf->cam->color_mode_activated;
-		fdf->flag->low_color = 0;
-		fdf->flag->mid_color = 0;
-		fdf->flag->high_color = 0;
-		restore_color(fdf);
-	}
+	if (key == XK_m)
+		fdf->map->has_color = !fdf->map->has_color;
+	handle_reset_color_mode(fdf, key);
 }

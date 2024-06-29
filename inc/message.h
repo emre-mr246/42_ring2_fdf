@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:07:46 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 00:28:44 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 01:57:13 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define ERR_INIT_MLX "Failed to initialize MiniLibX."
 # define ERR_INIT_MLX_WIN "Failed to initialize MiniLibX window."
 # define ERR_INIT_MLX_IMG "Failed to initialize MiniLibX image."
-# define ERR_WIN_SIZE "Minimum window size is 1080x720."
 
 // MESSAGE
 # define MSG_EXIT "Program exited successfully."

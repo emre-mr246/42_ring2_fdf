@@ -6,7 +6,7 @@
 #    By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 07:09:36 by emgul             #+#    #+#              #
-#    Updated: 2024/06/28 23:56:05 by emgul            ###   ########.fr        #
+#    Updated: 2024/06/29 23:15:58 by emgul            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,11 @@ BONUS_FILES		=	cam	\
 					init2	\
 					keypress	\
 					keypress2	\
+					keypress3	\
 					main	\
 					map	\
 					map_utils	\
+					map_utils2	\
 					matrix	\
 					menu	\
 					menu2	\
@@ -52,7 +54,7 @@ BONUS_FILES		=	cam	\
 NAME			=	fdf
 
 CC				=	gcc
-CFLAGS			=	-I $(LIBFT_PATH) -I lib/minilibx-linux/ -g -Wall -Wextra -Werror
+CFLAGS			=	-I $(LIBFT_PATH) -I lib/minilibx-linux/ -g #-Wall -Wextra -Werror
 MFLAGS			=	-s -C
 AR				=	ar rcs
 RM				=	rm -rf

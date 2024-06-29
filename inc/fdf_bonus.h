@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:25:39 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 00:35:38 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 23:38:32 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # define WIN_NAME "FDF BONUS - emgul"
 # define WIN_WIDTH 1080
-# define WIN_HEIGHT 720
+# define WIN_HEIGHT 790
 # define MENU_WIDTH 190
 
-# define COS_30 0.866
+# define COS_30 0.86602540378
 # define SIN_30 0.5
 # define PI 3.141592653589793
 # define HEX_BASE 16
@@ -27,7 +27,7 @@ enum				e_projection
 {
 	ISOMETRIC,
 	OBLIQUE,
-	PERSPECTIVE_TOP,
+	PERSPECTIVE_BOTTOM,
 	AXONOMETRIC,
 	TOP
 };
@@ -95,6 +95,7 @@ typedef struct s_cam
 	float			rotate_y;
 	float			rotate_z;
 	int				color_mode;
+	int				rotate_mode;
 	int				color_mode_activated;
 	int				anti_aliasing;
 }					t_cam;
@@ -130,6 +131,7 @@ int					valid_width(int file_descriptor, int width);
 void				handle_color_flag(t_fdf *fdf);
 void				handle_color_for_height(t_fdf *fdf);
 void				center_to_origin(t_map *map);
+void 				handle_color_for_height_dynamic(t_fdf *fdf);
 
 // EXIT
 void				exit_with_error(char *error_msg, t_fdf *fdf);
@@ -163,21 +165,21 @@ void				free_split(char **split_line);
 void				get_matrix(t_fdf *fdf);
 
 // ROTATE
-void				rotate_x(t_fdf *fdf, t_point *initial_p, t_point *end_p,
-						float angle);
-void				rotate_y(t_point *initial_p, t_point *end_p, float angle);
-void				rotate_z(t_point *initial_p, t_point *end_p, float angle);
+void				rotate_x(t_fdf *fdf, t_point *start_p, t_point *end_p, float angle);
+void	rotate_y(t_fdf *fdf, t_point *start_p, t_point *end_p, float angle);
+void	rotate_z(t_fdf *fdf, t_point *start_p, t_point *end_p, float angle);
 
 // KEYPRESS
 void				handle_color(t_fdf *fdf, int key);
 int					handle_keypress(int key, t_fdf *fdf);
+void				handle_projection(t_fdf *fdf, int key);
 void				set_rgb(t_fdf *fdf, int *r, int *g, int *b);
 
 // PROJECTION
-void				isometric(t_fdf *f, t_point *sp, t_point *ep);
+void	isometric(t_fdf *f, t_point *start_p, t_point *end_p);
 void				oblique(t_fdf *fdf, t_point *initial_point,
 						t_point *end_point);
-void				perspective_top(t_fdf *fdf, t_point *start_point,
+void				perspective_bottom(t_fdf *fdf, t_point *start_point,
 						t_point *end_point);
 void				axonometric(t_point *start_point, t_point *end_point);
 
@@ -195,6 +197,7 @@ void				show_move(t_fdf *fdf);
 void				show_color(t_fdf *fdf);
 void				show_location(t_fdf *fdf);
 void				show_anti_aliasing(t_fdf *fdf);
+void				show_rotate_mode(t_fdf *fdf);
 
 // DRAW
 void				draw(t_fdf *fdf, t_point start, t_point end);

@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 02:42:49 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/28 23:45:14 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/29 23:59:45 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,29 @@
 
 static void	render_line(t_fdf *fdf, t_point start_point, t_point end_point)
 {
+	if (!fdf->map->has_color && fdf->cam->color_mode_activated)
+		handle_color_for_height_dynamic(fdf);
 	scale_map(fdf, &start_point, &end_point);
+	if (fdf->cam->rotate_mode == 0)
+	{
+		rotate_x(fdf, &start_point, &end_point, fdf->cam->rotate_x);
+		rotate_y(fdf, &start_point, &end_point, fdf->cam->rotate_y);
+		rotate_z(fdf, &start_point, &end_point, fdf->cam->rotate_z);
+	}
 	if (fdf->cam->projection == ISOMETRIC)
 		isometric(fdf, &start_point, &end_point);
 	else if (fdf->cam->projection == OBLIQUE)
 		oblique(fdf, &start_point, &end_point);
 	else if (fdf->cam->projection == AXONOMETRIC)
 		axonometric(&start_point, &end_point);
-	else if (fdf->cam->projection == PERSPECTIVE_TOP)
-		perspective_top(fdf, &start_point, &end_point);
-	rotate_x(fdf, &start_point, &end_point, fdf->cam->rotate_x);
-	rotate_y(&start_point, &end_point, fdf->cam->rotate_y);
-	rotate_z(&start_point, &end_point, fdf->cam->rotate_z);
+	else if (fdf->cam->projection == PERSPECTIVE_BOTTOM)
+		perspective_bottom(fdf, &start_point, &end_point);
+	if (fdf->cam->rotate_mode == 1)
+	{
+		rotate_x(fdf, &start_point, &end_point, fdf->cam->rotate_x);
+		rotate_y(fdf, &start_point, &end_point, fdf->cam->rotate_y);
+		rotate_z(fdf, &start_point, &end_point, fdf->cam->rotate_z);
+	}
 	centralize(fdf, &start_point, &end_point);
 	draw(fdf, start_point, end_point);
 }
