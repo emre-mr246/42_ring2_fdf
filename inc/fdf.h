@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:25:39 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 21:16:24 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/30 03:21:28 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define WIN_NAME "FDF - emgul"
 # define WIN_WIDTH 1080
 # define WIN_HEIGHT 720
-# define MENU_WIDTH 190
 
 # define COS_30 0.86602540378
 # define SIN_30 0.5
