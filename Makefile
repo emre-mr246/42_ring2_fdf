@@ -6,7 +6,7 @@
 #    By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 07:09:36 by emgul             #+#    #+#              #
-#    Updated: 2024/06/30 02:47:46 by emgul            ###   ########.fr        #
+#    Updated: 2024/06/30 03:24:03 by emgul            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,9 @@ check-leaks-bonus: all
 	@echo "$(RED)-==/ LEAK CHECK MODE ON \==-$(DEFAULT)"
 	@valgrind $(VALGRIND_PARAMS) ./fdf maps/10-2.fdf
 	@make --no-print-directory clean
+
+check-norm: all
+	@norminette src/ lib/libft inc/ | grep -B 1 "Error\|Warning" || echo "$(GREEN)Norme check passed!$(DEFAULT)"
 
 all: $(NAME)
 
