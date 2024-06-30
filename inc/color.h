@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:59:07 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/29 00:30:11 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/30 03:12:02 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@
 # define HEX_LIME 0x00FF8F
 # define HEX_LBLUE 0xAE00FF
 # define HEX_WHITE 0xFFFFFF
+# define HEX_BLACK 0x000000
 
 #endif

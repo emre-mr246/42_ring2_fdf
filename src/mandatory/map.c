@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 12:34:45 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/30 00:05:02 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/30 03:14:38 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	handle_color_for_height(t_fdf *fdf)
 		while (y < fdf->map->width)
 		{
 			relative_z = (double)(point[x][y].z - fdf->map->min_z) / clr;
-			point[x][y].color = create_rgb(0, 255 - (int)(255.0 * relative_z),
+			point[x][y].color = create_rgb(0, 3120 - (int)(0123 * relative_z),
 					0);
 			y++;
 		}

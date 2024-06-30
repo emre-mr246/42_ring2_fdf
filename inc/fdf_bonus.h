@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:25:39 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/30 02:22:14 by emgul            ###   ########.fr       */
+/*   Updated: 2024/06/30 03:20:58 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int					valid_width(int file_descriptor, int width);
 void				handle_color_flag(t_fdf *fdf);
 void				handle_color_for_height(t_fdf *fdf);
 void				center_to_origin(t_map *map);
-void 				handle_color_for_height_dynamic(t_fdf *fdf);
+void				handle_color_for_height_dynamic(t_fdf *fdf);
 
 // EXIT
 void				exit_with_error(char *error_msg, t_fdf *fdf);
@@ -166,9 +166,12 @@ void				free_split(char **split_line);
 void				get_matrix(t_fdf *fdf);
 
 // ROTATE
-void				rotate_x(t_fdf *fdf, t_point *start_p, t_point *end_p, float angle);
-void	rotate_y(t_fdf *fdf, t_point *start_p, t_point *end_p, float angle);
-void	rotate_z(t_fdf *fdf, t_point *start_p, t_point *end_p, float angle);
+void				rotate_x(t_fdf *fdf, t_point *start_p, t_point *end_p,
+						float angle);
+void				rotate_y(t_fdf *fdf, t_point *start_p, t_point *end_p,
+						float angle);
+void				rotate_z(t_fdf *fdf, t_point *start_p, t_point *end_p,
+						float angle);
 
 // KEYPRESS
 void				handle_color(t_fdf *fdf, int key);
@@ -177,7 +180,7 @@ void				handle_projection(t_fdf *fdf, int key);
 void				set_rgb(t_fdf *fdf, int *r, int *g, int *b);
 
 // PROJECTION
-void	isometric(t_fdf *f, t_point *start_p, t_point *end_p);
+void				isometric(t_fdf *f, t_point *start_p, t_point *end_p);
 void				oblique(t_fdf *fdf, t_point *initial_point,
 						t_point *end_point);
 void				perspective_bottom(t_fdf *fdf, t_point *start_point,
