@@ -2,6 +2,8 @@
 
 The "fdf" project challenges students to create a graphical representation of a landscape using a provided dataset of coordinates. This project is a fundamental part of the 42 school curriculum, aiming to develop skills in parsing files, working with graphics libraries, and understanding 3D representations.
 
+Note: This project is intended for Linux systems. For running on macOS, modifications to the Makefile and adjustments in the MinilibX library are required.
+
 ## Objective 🎯
 
 The objective of the "fdf" project is to generate a wireframe representation of a terrain based on coordinates provided in a file. This involves parsing the file to extract coordinate data, transforming these coordinates into a 3D space, and using a graphics library to draw lines between points to visualize the terrain.
