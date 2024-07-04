@@ -6,7 +6,7 @@
 #    By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 07:09:36 by emgul             #+#    #+#              #
-#    Updated: 2024/06/30 03:24:03 by emgul            ###   ########.fr        #
+#    Updated: 2024/07/05 00:01:56 by emgul            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ BONUS_FILES		=	cam	\
 NAME			=	fdf
 
 CC				=	gcc
-CFLAGS			=	-I $(LIBFT_PATH) -I lib/minilibx-linux/ -g #-Wall -Wextra -Werror
+CFLAGS			=	-I $(LIBFT_PATH) -I lib/minilibx-linux/ -g -Wall -Wextra -Werror
 MFLAGS			=	-s -C
 AR				=	ar rcs
 RM				=	rm -rf

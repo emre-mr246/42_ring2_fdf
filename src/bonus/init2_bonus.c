@@ -6,7 +6,7 @@
 /*   By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 18:25:44 by emgul             #+#    #+#             */
-/*   Updated: 2024/06/30 02:24:51 by emgul            ###   ########.fr       */
+/*   Updated: 2024/07/05 00:05:59 by emgul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_cam(t_fdf *fdf)
 	cam->x_offset = (WIN_WIDTH / 2) + MENU_WIDTH / 2;
 	cam->y_offset = (WIN_HEIGHT / 2);
 	cam->z_scale_factor = 1;
-	cam->z_scale_factor_keypress;
+	cam->z_scale_factor_keypress = 0;
 	cam->projection = ISOMETRIC;
 	cam->rotate_x = 0;
 	cam->rotate_y = 0;
