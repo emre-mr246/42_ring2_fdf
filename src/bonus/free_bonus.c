@@ -95,6 +95,4 @@ void	free_all(t_fdf *fdf)
 		free(fdf->cam);
 	if (fdf->map_name)
 		free(fdf->map_name);
-	if (fdf)
-		free(fdf);
 }
