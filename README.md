@@ -27,6 +27,10 @@ Note: This project is intended for Linux systems. For running on macOS, modifica
 
 The objective of the "fdf" project is to generate a wireframe representation of a terrain based on coordinates provided in a file. This involves parsing the file to extract coordinate data, transforming these coordinates into a 3D space, and using a graphics library to draw lines between points to visualize the terrain.
 
+## Algorithm 🧠
+
+Utilizing the Bresenham line drawing algorithm as a foundation, I streamlined the slope calculation process by incorporating both the starting and ending points of the line into the function. Additionally, I enhanced the algorithm with anti-aliasing. Leveraging these enhancements, I have crafted a remarkably concise algorithm that rivals the functionality of more intricate counterparts, such as Xiaolin Wu's algorithm.
+
 ## Image 📸
 
 ![](img/julia.png)
