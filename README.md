@@ -1,3 +1,22 @@
+<div align="center">
+  <img src="img/fdf.png" alt="Logo" width="150" height="150">
+  <h2>42 FDF PROJECT</h2>
+    <a href= https://github.com/emre-mr246/42-evaluation><img src="https://img.shields.io/badge/score-125%20%2F%20100-success?style=for-the-badge"/></a>
+    <a href= https://github.com/emre-mr246/42-evaluation><img src="https://img.shields.io/badge/circle-2-magenta?style=for-the-badge"/></a>
+    <a href= https://github.com/emre-mr246/42-evaluation><img src="https://img.shields.io/badge/42-Evaluation-red?style=for-the-badge"/></a>
+    <a href= https://github.com/emre-mr246/42-evaluation><img src="https://img.shields.io/github/last-commit/emre-mr246/42_ring2_fdf?style=for-the-badge"/></a>
+    <a href="https://42istanbul.com.tr/"><img src="https://img.shields.io/badge/42-ISTANBUL-white?style=for-the-badge"/></a>
+   
+<h4>
+    <a href="https://github.com/emre-mr246/42_ring2_fdf/issues">❔ Ask A Question</a>
+  <span> · </span>
+    <a href="https://github.com/emre-mr246/42_ring2_fdf/issues">🪲 Report Bug</a>
+  <span> · </span>
+    <a href="https://github.com/emre-mr246/42_ring2_fdf/issues">💬 Request Feature</a>
+</h4>
+</div>
+
+
 ## Introduction 🚀
 
 The "fdf" project challenges students to create a graphical representation of a landscape using a provided dataset of coordinates. This project is a fundamental part of the 42 school curriculum, aiming to develop skills in parsing files, working with graphics libraries, and understanding 3D representations.
