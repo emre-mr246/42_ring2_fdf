@@ -39,5 +39,3 @@ The objective of the "fdf" project is to generate a wireframe representation of 
 2. You can run the program with the following command:
    `$ ./fdf maps/pyramide.fdf` 
     
-## Score 🥇
-![](https://i.ibb.co/VCjrVZb/success.png)
