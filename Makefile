@@ -128,7 +128,7 @@ re: fclean all
 
 re-bonus: fclean bonus
 
-.PHONY: all clean fclean re bonus libclean re-bonus check-leaks check-leaks-bonus
+.PHONY: all clean fclean re bonus libclean re-bonus check-leaks check-leaks-bonus check-norm
 
 # ANSI COLOR CODES
 DEFAULT = \033[0m
