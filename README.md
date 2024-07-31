@@ -41,5 +41,5 @@ Utilizing the Bresenham line drawing algorithm as a foundation, I streamlined th
    `$ make bonus` 
 
 2. You can run the program with the following command:
-   `$ ./fdf maps/pyramide.fdf` 
+   `$ ./fdf_bonus maps/pyramide.fdf` 
     
