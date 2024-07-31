@@ -6,39 +6,39 @@
 #    By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 07:09:36 by emgul             #+#    #+#              #
-#    Updated: 2024/07/31 08:14:19 by emgul            ###   ########.fr        #
+#    Updated: 2024/07/31 08:47:51 by emgul            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES            = cam draw exit free init init2 keypress main map map_utils matrix parameters projection render utils
+FILES				= cam draw exit free init init2 keypress main map map_utils matrix parameters projection render utils
 
-BONUS_FILES      = cam draw draw2 exit free init init2 keypress keypress2 keypress3 main map map_utils map_utils2 matrix menu menu2 menu3 parameters projection render rotate utils help
+BONUS_FILES			= cam draw draw2 exit free init init2 keypress keypress2 keypress3 main map map_utils map_utils2 matrix menu menu2 menu3 parameters projection render rotate utils help
 
-NAME             = fdf
-BONUS_NAME		= fdf_bonus
+NAME				= fdf
+BONUS_NAME			= fdf_bonus
 
-CC               = gcc
-CCFLAGS          = -Wall -Wextra -Werror -lXext -lX11 -lm -lbsd -g
-MAKEFLAGS        = --no-print-directory
-RM               = rm -rf
+CC					= gcc
+CCFLAGS				= -Wall -Wextra -Werror -lXext -lX11 -lm -lbsd -g
+MAKEFLAGS			= --no-print-directory
+RM					= rm -rf
 
-LIBFT_PATH       = lib/libft/
-LIBFT            = $(LIBFT_PATH)libft.a
+LIBFT_PATH			= lib/libft/
+LIBFT				= $(LIBFT_PATH)libft.a
 
-MLX_PATH         = lib/minilibx/
-MLX              = $(MLX_PATH)libmlx.a
+MLX_PATH			= lib/minilibx/
+MLX					= $(MLX_PATH)libmlx.a
 
-FILES_PATH       = src/mandatory/
-BONUS_FILES_PATH = src/bonus/
-OBJ_DIR          = .obj/
+FILES_PATH			= src/mandatory/
+BONUS_FILES_PATH	= src/bonus/
+OBJ_DIR				= .obj/
 
-SRCS             = $(addprefix $(FILES_PATH), $(addsuffix .c, $(FILES)))
-BONUS_SRCS       = $(addprefix $(BONUS_FILES_PATH), $(addsuffix _bonus.c, $(BONUS_FILES)))
+SRCS				= $(addprefix $(FILES_PATH), $(addsuffix .c, $(FILES)))
+BONUS_SRCS			= $(addprefix $(BONUS_FILES_PATH), $(addsuffix _bonus.c, $(BONUS_FILES)))
 
-OBJS             = $(addprefix $(OBJ_DIR), $(notdir $(SRCS:.c=.o)))
-BONUS_OBJS       = $(addprefix $(OBJ_DIR), $(notdir $(BONUS_SRCS:.c=.o)))
+OBJS				= $(addprefix $(OBJ_DIR), $(notdir $(SRCS:.c=.o)))
+BONUS_OBJS			= $(addprefix $(OBJ_DIR), $(notdir $(BONUS_SRCS:.c=.o)))
 
-VALGRIND_PARAMS  = --leak-check=full --show-leak-kinds=all --track-origins=yes
+VALGRIND_PARAMS		= --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 vpath %.c $(FILES_PATH) $(BONUS_FILES_PATH)
 
