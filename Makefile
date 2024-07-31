@@ -82,7 +82,6 @@ VALGRIND_PARAMS	=	--leak-check=full --show-leak-kinds=all --track-origins=yes
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
 	@gcc $(OBJS) -o $(NAME) $(LIBFT) $(MLX) -lXext -lX11 -lm -lbsd
 	@echo "$(GREEN)-== $(NAME) created! ==-$(DEFAULT)"
-	@make --no-print-directory clean
 
 $(LIBFT):
 	@make --no-print-directory $(MFLAGS) $(LIBFT_PATH)
@@ -93,13 +92,13 @@ $(MLX):
 check-leaks: all
 	@make --no-print-directory re
 	@echo "$(RED)-==/ LEAK CHECK MODE ON \==-$(DEFAULT)"
-	@valgrind $(VALGRIND_PARAMS) ./fdf maps/10-2.fdf
+	@valgrind $(VALGRIND_PARAMS) ./$(name) maps/10-2.fdf
 	@make --no-print-directory clean
 
 check-leaks-bonus: all
 	@make --no-print-directory re-bonus
 	@echo "$(RED)-==/ LEAK CHECK MODE ON \==-$(DEFAULT)"
-	@valgrind $(VALGRIND_PARAMS) ./fdf maps/10-2.fdf
+	@valgrind $(VALGRIND_PARAMS) ./$(name) maps/10-2.fdf
 	@make --no-print-directory clean
 
 check-norm: all
@@ -129,7 +128,7 @@ re: fclean all
 
 re-bonus: fclean bonus
 
-.PHONY: all clean fclean re bonus check-leak libclean check-leaks-bonus re-bonus check-leaks
+.PHONY: all clean fclean re bonus libclean re-bonus check-leaks check-leaks-bonus
 
 # ANSI COLOR CODES
 DEFAULT = \033[0m
