@@ -6,56 +6,19 @@
 #    By: emgul <emgul@student.42istanbul.com.tr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 07:09:36 by emgul             #+#    #+#              #
-#    Updated: 2024/07/05 00:01:56 by emgul            ###   ########.fr        #
+#    Updated: 2024/07/31 06:42:11 by emgul            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES			=	cam	\
-					draw	\
-					exit	\
-					free	\
-					init	\
-					init2	\
-					keypress	\
-					main	\
-					map	\
-					map_utils	\
-					matrix	\
-					parameters	\
-					projection	\
-					render	\
-					utils
+FILES			=	cam	draw exit free init init2 keypress main	map	map_utils matrix parameters	projection render utils
 
-BONUS_FILES		=	cam	\
-					draw	\
-					draw2	\
-					exit	\
-					free	\
-					init	\
-					init2	\
-					keypress	\
-					keypress2	\
-					keypress3	\
-					main	\
-					map	\
-					map_utils	\
-					map_utils2	\
-					matrix	\
-					menu	\
-					menu2	\
-					menu3	\
-					parameters	\
-					projection	\
-					render	\
-					rotate	\
-					utils	\
-					help
+BONUS_FILES		=	cam	draw draw2 exit free init init2 keypress keypress2 keypress3 main map map_utils map_utils2 matrix menu menu2 menu3 parameters projection render rotate utils help
 
 NAME			=	fdf
 
 CC				=	gcc
 CFLAGS			=	-I $(LIBFT_PATH) -I lib/minilibx-linux/ -g -Wall -Wextra -Werror
-MFLAGS			=	-s -C
+MFLAGS			=	-s -C -no-print-directory
 AR				=	ar rcs
 RM				=	rm -rf
 
@@ -76,40 +39,34 @@ BONUS_OBJS      =   $(BONUS_SRCS:.c=.o)
 
 VALGRIND_PARAMS	=	--leak-check=full --show-leak-kinds=all --track-origins=yes
 
-.c.o:
-	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+all: $(NAME)
+
+bonus: $(LIBFT) $(MLX) $(BONUS_OBJS)
+	@gcc $(BONUS_OBJS) -o $(NAME) $(LIBFT) $(MLX) -lXext -lX11 -lm -lbsd
+	@echo "$(GREEN)-== $(NAME) created! ==-$(DEFAULT)"
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
 	@gcc $(OBJS) -o $(NAME) $(LIBFT) $(MLX) -lXext -lX11 -lm -lbsd
 	@echo "$(GREEN)-== $(NAME) created! ==-$(DEFAULT)"
 
 $(LIBFT):
-	@make --no-print-directory $(MFLAGS) $(LIBFT_PATH)
+	@make $(MFLAGS) $(LIBFT_PATH)
 
 $(MLX):
-	@make --no-print-directory $(MFLAGS) $(MLX_PATH)
+	@make $(MFLAGS) $(MLX_PATH)
 
 check-leaks: all
 	@make --no-print-directory re
 	@echo "$(RED)-==/ LEAK CHECK MODE ON \==-$(DEFAULT)"
 	@valgrind $(VALGRIND_PARAMS) ./$(name) maps/10-2.fdf
-	@make --no-print-directory clean
 
 check-leaks-bonus: all
 	@make --no-print-directory re-bonus
 	@echo "$(RED)-==/ LEAK CHECK MODE ON \==-$(DEFAULT)"
 	@valgrind $(VALGRIND_PARAMS) ./$(name) maps/10-2.fdf
-	@make --no-print-directory clean
 
 check-norm: all
 	@norminette src/ lib/libft inc/ | grep -B 1 "Error\|Warning" || echo "$(GREEN)Norme check passed!$(DEFAULT)"
-
-all: $(NAME)
-
-bonus: $(LIBFT) $(MLX) $(BONUS_OBJS)
-	@gcc $(BONUS_OBJS) -o $(NAME) $(LIBFT) $(MLX) -lXext -lX11 -lm -lbsd
-	@echo "$(GREEN)-== $(NAME) created! ==-$(DEFAULT)"
-	@make --no-print-directory clean
 	
 clean:
 	@$(RM) $(OBJS)
