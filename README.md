@@ -16,7 +16,6 @@
 </h4>
 </div>
 
-
 ## Introduction 🚀
 
 The "fdf" project challenges students to create a graphical representation of a landscape using a provided dataset of coordinates. This project is a fundamental part of the 42 school curriculum, aiming to develop skills in parsing files, working with graphics libraries, and understanding 3D representations.
@@ -31,10 +30,6 @@ The objective of the "fdf" project is to generate a wireframe representation of 
 
 Utilizing the Bresenham line drawing algorithm as a foundation, I streamlined the slope calculation process by incorporating both the starting and ending points of the line into the function. Additionally, I enhanced the algorithm with anti-aliasing. Leveraging these enhancements, I have crafted a remarkably concise algorithm that rivals the functionality of more intricate counterparts, such as Xiaolin Wu's algorithm.
 
-## Image 📸
-
-![](img/julia.png)
-
 ## Features 🔍
 - 5 different perspectives
 - Custom Color Mode: Set the color as you like by pressing the C, V, and B keys, and then paint any part of the drawing at your desired height using the G and H keys.
@@ -48,6 +43,10 @@ Utilizing the Bresenham line drawing algorithm as a foundation, I streamlined th
 - View the model's properties live from the menu
 - Move the model using the WASD keys
 - Reset everything or turn off the custom color mode
+
+## Image 📸
+
+![](img/julia.png)
 
 ## Usage 🔍
 
