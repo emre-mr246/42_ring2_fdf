@@ -35,6 +35,20 @@ Utilizing the Bresenham line drawing algorithm as a foundation, I streamlined th
 
 ![](img/julia.png)
 
+## Features 🔍
+- 5 different perspectives
+- Custom Color Mode: Set the color as you like by pressing the C, V, and B keys, and then paint any part of the drawing at your desired height using the G and H keys.
+- Height-Based Color Mode: Color intensity increases or decreases based on height.
+- Rotation Modes: Rotate around the model’s own axis or the camera axis.
+- Anti-Aliasing
+- Zoom in/out
+- Rotate the model
+- Flatten the model
+- Increase/decrease model height
+- View the model's properties live from the menu
+- Move the model using the WASD keys
+- Reset everything or turn off the custom color mode
+
 ## Usage 🔍
 
 1. In the project's main directory, compile the library using the `make` command.
