@@ -24,7 +24,7 @@ Note: This project is intended for Linux systems. For running on macOS, modifica
 
 ## Objective 🎯
 
-The objective of the "fdf" project is to generate a wireframe representation of a terrain based on coordinates provided in a file. This involves parsing the file to extract coordinate data, transforming these coordinates into a 3D space, and using a graphics library to draw lines between points to visualize the terrain.
+The objective of the "FDF" project is to generate a wireframe representation of a terrain based on coordinates provided in a file. This involves parsing the file to extract coordinate data, transforming these coordinates into a 3D space, and using a graphics library to draw lines between points to visualize the terrain.
 
 ## Line Drawing Algorithm 🧠
 
